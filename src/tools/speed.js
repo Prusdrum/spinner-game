@@ -1,5 +1,5 @@
 module.exports = {
-  slow: 0.02,
-  normal: 0.05,
-  fast: 0.10
+  slow: 1,
+  normal: 2,
+  fast: 3
 };

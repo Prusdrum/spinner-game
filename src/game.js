@@ -8,8 +8,8 @@ class Game {
   constructor (ctx) {
     this.ctx = ctx;
     this.cursor = {
-      x: 0,
-      y: 0
+      x: this.ctx.canvas.width / 2,
+      y: this.ctx.canvas.height / 2
     }
     this.drawTool = new DrawTool(this.ctx);
     this.rotationMult = speed.normal;

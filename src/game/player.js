@@ -12,7 +12,7 @@ class Player {
 
   draw(x, y, rotationMultiplier) {
     //make spinner longer when slower
-    let length = 30 + (0.5 / rotationMultiplier);
+    const length = this.getLength(30, rotationMultiplier);
     let points = this.getLinePoints(x, y, length, this.rotation, true);
     this.drawTool.drawLine(
       [points.center, points.start, points.end],
@@ -22,9 +22,17 @@ class Player {
     this.setNewRotation(rotationMultiplier);
   }
 
+  getLength(baseLength, rotationMultiplier){
+    return (0.5 * baseLength) + (baseLength / rotationMultiplier);
+  }
+
   getLinePoints(centerX, centerY, length, angle, twoSided){
-    const dX = Math.cos(angle) * length;
-    const dY = Math.sin(angle) * length;
+    //remember that in HTML canvas Y-axis is inverted
+    const radians = (Math.PI / 180) * angle;
+    const cos = Math.cos(radians);
+    const sin = Math.sin(radians)
+    const dX = Math.round(cos * length);
+    const dY = Math.round(sin * length);
     let start = {};
     let end = {};
     let center = { x: centerX, y : centerY };

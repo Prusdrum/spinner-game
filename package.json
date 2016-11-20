@@ -13,10 +13,13 @@
     "gulp-connect": "^5.0.0",
     "gulp-plumber": "^1.1.0",
     "gulp-watch": "^4.3.10",
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0"
   },
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha ./test/**/*.js"
+    "test": "./node_modules/mocha/bin/mocha ./test/**/*.js",
+    "server": "./node_modules/gulp/bin/gulp.js"
   },
   "author": "",
   "license": "ISC"
