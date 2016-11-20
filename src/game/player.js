@@ -1,6 +1,3 @@
-const DrawTool = require('../tools/draw.js');
-
-
 class Player {
   constructor(drawTool){
     this.drawTool = drawTool;
