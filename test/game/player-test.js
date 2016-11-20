@@ -128,4 +128,20 @@ describe("player test", () => {
       expect(drawMock.drawLine).to.have.been.calledOnce;
     });
   });
+
+  describe("checkCollision", () => {
+    let player;
+
+    beforeEach(() => {
+      player = new Player(drawMock);
+    });
+
+    it("should return true when collision detected", () => {
+      const enemy = { x: 3.5, y: 0 }
+      player.draw(0, 0, 2);
+      const collision = player.checkCollision(enemy);
+
+      expect(collision).to.be.true;
+    })
+  });
 });

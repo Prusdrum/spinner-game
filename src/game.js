@@ -12,10 +12,14 @@ class Game {
     this.cursor = {
       x: this.ctx.canvas.width / 2,
       y: this.ctx.canvas.height / 2
-    }
+    };
+    this.alive = true;
     this.canvas = this.ctx.canvas;
     this.drawTool = new DrawTool(this.ctx);
     this.rotationMult = speed.normal;
+    this.score = 0;
+    this.now = Date.now();
+    this.scoreDelta = 500;
 
     this.canvas.addEventListener("mousemove", (e) => {
       const canvasRect = e.target.getBoundingClientRect();
@@ -47,16 +51,34 @@ class Game {
     this.enemyFactory = new EnemyFactory(this.drawTool, width, height);
     this.enemyManager = new EnemyManager(
       this.drawTool,
-      this.enemyFactory.getEnemies(30),
-      width, height);
+      this.enemyFactory,
+      width, height
+      );
+    this.enemyManager.onCollision = () => {
+      console.log('you lost');
+      this.alive = false;
+    }
     this.mainLoop();
   }
 
   mainLoop(){
+    let newNow = Date.now();
     this.background.draw();
     this.player.draw(this.cursor.x, this.cursor.y, this.rotationMult);
     this.enemyManager.draw(this.player);
-    requestAnimationFrame(this.mainLoop.bind(this));
+
+    let delta = newNow - this.now;
+
+    if (delta >= this.scoreDelta){
+      this.score += 10;
+      this.now = newNow;
+    }
+
+    this.drawTool.drawScore(this.score);
+
+    if (this.alive){
+      requestAnimationFrame(this.mainLoop.bind(this));
+    }
   }
 }
 

@@ -32,7 +32,8 @@ class EnemyFactory {
   }
 
   getInitialVelocity() {
-    return Math.random() * 2 - 1;
+    let rand = Math.random() * 2 - 1;
+    return rand;
   }
 
   getVerticalStartPosition(){

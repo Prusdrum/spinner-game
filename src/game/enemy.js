@@ -16,9 +16,10 @@ class Enemy {
     this.y += this.velocity.y * this.speed;
   }
 
-  resetPosition(){
+  resetPosition(newVelocity){
     this.x = this.initX;
     this.y = this.initY;
+    this.velocity = newVelocity;
   }
 }
 

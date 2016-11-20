@@ -39,6 +39,14 @@ class DrawTool {
     this.ctx.fillStyle = color;
     this.ctx.fill();
   }
+
+  drawScore(score){
+    let ctx = this.ctx;
+
+    ctx.font = "30px Verdana";
+    ctx.fillStyle = "yellow";
+    ctx.fillText(`Score: ${score.toString()}`, 50, 50);
+  }
 }
 
 module.exports = DrawTool;
