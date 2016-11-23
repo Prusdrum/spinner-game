@@ -3,9 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>Spinner Game</title>
+    <style media="screen">
+      body {
+          background-color: cornsilk;
+      }
+      canvas {
+        vertical-align: top;
+      }
+      .instructions {
+        display: inline-block;
+        font-family: sans-serif;
+      }
+    </style>
   </head>
   <body>
     <canvas id="spinerCanvas" width="1200" height="600"></canvas>
+    <section class="instructions">
+      <h1>Instruction</h1>
+      <ul>
+        <li>Click Arrow up (&uarr;) to speed up rotating</li>
+        <li>Click Arrow down (&darr;) to slow down rotating</li>
+        <li>Refresh page (F5) to restart game</li>
+      </ul>
+    </section>
     <script src="./dist/index.js"></script>
   </body>
 </html>
